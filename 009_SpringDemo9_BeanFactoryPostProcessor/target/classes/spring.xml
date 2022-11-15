@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans
+	xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
+		default-init-method="myInit" default-destroy-method="myDestroy">
+
+	<!-- <beans:bean id="triangle" class="com.huseyinaydin.Triangle" autowire="byName">
+		
+	</beans:bean> -->
+	
+	<beans:bean id="triangle" class="com.huseyinaydin.Triangle" autowire="byName" init-method="myInit" destroy-method="myDestroy">
+		
+	</beans:bean>
+
+	<beans:bean id="pointA" class="com.huseyinaydin.Point">
+		<beans:property name="x" value="${pointA.pointX}" />
+		<beans:property name="y" value="${pointA.pointY}" />
+	</beans:bean>
+	
+	<beans:bean id="pointB" class="com.huseyinaydin.Point">
+		<beans:property name="x" value="20" />
+		<beans:property name="y" value="0" />
+	</beans:bean>
+	
+	<beans:bean id="pointC" class="com.huseyinaydin.Point">
+		<beans:property name="x" value="-20" />
+		<beans:property name="y" value="0" />
+	</beans:bean>
+	
+	<beans:bean class="com.huseyinaydin.MyBeanFactoryPP" />
+	
+	<beans:bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<beans:property name="locations" value="pointsconfig.properties"/>
+	</beans:bean>
+</beans:beans>
